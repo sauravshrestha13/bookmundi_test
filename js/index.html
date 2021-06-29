@@ -1,0 +1,184 @@
+<style>
+    .red{
+        color:red;
+    }
+</style>
+
+<div class="asad" id="asd" data-a="Asd" data-b="asd">
+
+    <p id="task1a" class="a">Task 1a</p>
+    <button class="btn" onclick="changeClassName()">Change Class Name </button>
+    <br>
+
+    <p  class="a">Task 1b</p>
+    <span id="task1b" data-a="ddata a" data-b="data b" data-c="data c"></span>
+    <button class="btn" onclick="getDataSet()">Get Data Set </button>
+    <span>// Data set is displayed on console</span>
+
+    <p  class="a">Task 1c</p>
+    <span id="task1b" data-a="ddata a" data-b="data b" data-c="data c"></span>
+    <button class="btn" onclick="addChild()">Add Child </button>
+    <button class="btn" onclick="insertB()">Insert Before </button>
+    <button class="btn" onclick="insertA()">Insert After </button>
+
+    <div id="task1c1">
+
+    </div>
+
+
+    <br>
+    <p id="pp" class="a">Task 1d</p>
+    <button class="btn" onclick="ajaxGet()">Ajax Get </button>
+    <button class="btn" onclick="ajaxPost()">Ajax Post </button>
+    <span>// data is displayed on conlsole</span>
+
+    <br>
+    <p id="pp" class="a">Task 1e</p>
+    <input type="text" id="text1" />
+    <button class="btn" onclick="getFromText()"> Get from Text </button>
+    <button class="btn" onclick="setToText()"> Set to Text </button>
+    <span>// data is displayed on conlsole</span>
+
+    <br>
+
+    <select id="select1" >
+        <option value="1">one</option>
+        <option value="2">two</option>
+        <option value="3">three</option>
+
+    </select>
+    <button class="btn" onclick="getFromSelect()"> Get from Select </button>
+    <button class="btn" onclick="setToSelect()"> Set three to Select </button>
+
+    <span>// data is displayed on conlsole</span>
+
+
+    <br>
+
+    <input type="checkbox" value="1" id="check1"/> Check
+ 
+    <button class="btn" onclick="getFromCheck()"> Get from CheckBox </button>
+    <button class="btn" onclick="setToCheck()"> Set to CheckBox </button>
+
+    <span>// data is displayed on conlsole</span>
+
+
+    <br>
+    <br>
+
+    <p>Task 2</p>
+    <button class="btn" onclick="fetch()"> 3 Post Requests </button>
+    <span>// data is displayed on conlsole</span>
+
+    <br><br>
+    <p>Task 3</p>
+    <span id="myText">Click on the button to copy the text from the text field. Try to paste the text (e.g. ctrl+v) afterwards in a different window, to see the effect.</span>
+    <button onclick="copyText()">Copy text</button>
+
+    <br><br><br>
+    <p>Task 4</p>
+    <input id="age">
+    <button onclick="person.age=parseInt(person.age)+1">Add Age</button><br>
+    <span>//you can change input and check console for 2 way binding</span>
+
+    
+</div>
+
+<div class="asad" id="asd1" data-a="Aasdsd" data-b="aasdsdsd">
+        <div class="bdc">
+        </div>
+    </div>
+
+<br>
+
+ 
+    
+<script src="KQuery.js"></script>
+<script src="JSTask2.js"></script>
+<script src="JSTask3.js"></script>
+<script src="JSTask4.js"></script>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
+
+
+<script>
+    function changeClassName()
+    {
+        KQuery.changeClassName('#task1a','red')
+    }
+    function getDataSet()
+    {
+        console.log(KQuery.getDataSets('#task1b'));
+    }
+    function addChild()
+    {
+        KQuery.addChild("#task1c1",'div','<button>child</button>');   
+
+    }
+    function insertB()
+    {
+        KQuery.addElementBefore("#task1c1",'div','<button>before</button>');   
+    }
+    function insertA()
+    {
+        KQuery.addElementAfter("#task1c1",'div','<button>After</button>');   
+    }
+    function ajaxGet()
+    {
+        KQuery.ajaxGet(
+            "https://reqres.in/api/users/2",{},
+        function(response){
+            console.log(response)}
+            );
+        
+    }
+    
+    function ajaxPost()
+    {
+        KQuery.ajaxPost(
+            "https://reqres.in/api/users",{"name":"Saurav","job":"leader"},
+        function(response)
+        {
+            console.log(response);
+        }
+        );
+        
+    }
+    function getFromText()
+    {
+       console.log(KQuery.getVal('#text1'));
+    }
+    function setToText()
+    {
+        KQuery.setVal('#text1',"12323");
+    }
+    function getFromSelect()
+    {
+       console.log(KQuery.getVal('#select1'));
+    }
+    function setToSelect()
+    {
+        KQuery.setVal('#select1',"3");
+    }
+    function getFromCheck()
+    {
+       console.log(KQuery.getCheckedVal('#check1'));
+    }
+    function setToCheck()
+    {
+        KQuery.setCheckedVal('#check1',true);
+    }
+
+    function fetch(){
+       
+            fetchNames();
+    }
+
+    document.getElementById("age").addEventListener("keyup", function(){
+        //This input has changed
+        console.log(person.age);
+    });
+
+
+</script>
